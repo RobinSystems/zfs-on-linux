@@ -1,0 +1,34 @@
+#!/bin/bash 
+
+#
+# Wrapper script to run the debian package build of the zfsonlinux
+# package
+#
+
+pushd spl
+./autogen.sh
+./configure
+make deb-utils deb-kmod
+rm -rf temp
+mkdir temp
+for i in `ls *.deb`; do  dpkg -x $i temp; done
+
+cp -r temp/usr/src/spl* /usr/src/
+
+rm -rf temp
+popd
+
+pushd zfs
+./autogen.sh
+./configure
+make deb-utils deb-kmod
+popd
+
+rm -rf debs
+mkdir debs
+
+cp -f spl/*.deb debs/
+cp zfs/*.deb debs/
+
+exit $?
+
