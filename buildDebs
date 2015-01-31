@@ -9,7 +9,7 @@ pushd spl
 ./autogen.sh
 ./configure
 make deb-utils deb-kmod
-for i in `ls *.deb`; do  dpkg -i $i temp; done
+for i in `ls *.deb`; do  dpkg -i $i; done
 
 popd
 
