@@ -28,6 +28,5 @@ cp -f spl/*.deb debs/
 cp zfs/*.deb debs/
 
 chmod -R 777 *
-rm -rf *
 exit $?
 
