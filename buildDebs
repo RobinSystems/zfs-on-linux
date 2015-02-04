@@ -1,11 +1,13 @@
 #!/bin/bash 
-
 #
 # Wrapper script to run the debian package build of the zfsonlinux
 # package
 #
 
+
 pushd spl
+sed -e s/'ROBIN_BUILD_NUM'/$1/g META > META.temp
+mv META.temp META
 ./autogen.sh
 ./configure
 make deb-utils deb-kmod
@@ -14,6 +16,8 @@ for i in `ls *.deb`; do  dpkg -i $i; done
 popd
 
 pushd zfs
+sed -e s/'ROBIN_BUILD_NUM'/$1/g META > META.temp
+mv META.temp META
 ./autogen.sh
 ./configure
 make deb-utils deb-kmod
@@ -25,5 +29,7 @@ mkdir debs
 cp -f spl/*.deb debs/
 cp zfs/*.deb debs/
 
+chmod -R 777 *
+rm -rf *
 exit $?
 

@@ -9,11 +9,9 @@ docker_image="stash.robinsystems.com:5000/bld-host:r7"
 package="zfs-on-linux"
 baseVersion="0.6.3"
 label=".robin"
-
 #
 # Now switch to the docker image and build
 #
-
-docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDebs -b
+docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDebs $1 -b
 
 exit $?
