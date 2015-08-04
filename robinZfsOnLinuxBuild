@@ -5,7 +5,7 @@
 # package
 #
 
-docker_image="stash.robinsystems.com:5000/bld-host:r7"
+docker_image="stash.robinsystems.com:5000/bld-host:r11"
 package="zfs-on-linux"
 baseVersion="0.6.3"
 label=".robin"
