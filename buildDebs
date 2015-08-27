@@ -5,14 +5,16 @@
 #
 
 DEBUG_BUILD_OPTION=""
+DEB_DEBUG_EXTN=""
 
 if [ $2 == "debug" ]
 then
 DEBUG_BUILD_OPTION="--enable-debug"
+DEB_DEBUG_EXTN=$2+
 fi
 
 pushd spl
-sed -i "s/Release\:\s*.*/Release\:      $1/g" META
+sed -i "s/Release\:\s*.*/Release\:      $DEB_DEBUG_EXTN$1/g" META
 ./autogen.sh
 ./configure $DEBUG_BUILD_OPTION
 make deb-utils deb-kmod
@@ -21,7 +23,7 @@ for i in `ls *.deb`; do  dpkg -i $i; done
 popd
 
 pushd zfs
-sed -i "s/Release\:\s*.*/Release\:      $1/g" META
+sed -i "s/Release\:\s*.*/Release\:      $DEB_DEBUG_EXTN$1/g" META
 ./autogen.sh
 ./configure $DEBUG_BUILD_OPTION
 make deb-utils deb-kmod
