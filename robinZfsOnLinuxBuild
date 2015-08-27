@@ -12,6 +12,6 @@ label=".robin"
 #
 # Now switch to the docker image and build
 #
-docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDebs $1 -b
+docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDebs $1 $2 -b
 
 exit $?
