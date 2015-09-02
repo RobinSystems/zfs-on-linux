@@ -7,10 +7,10 @@
 DEBUG_BUILD_OPTION=""
 DEB_DEBUG_EXTN=""
 
-if [ $2 == "debug" ]
+if [[ ( $# -ge 2 ) && ( "$2" -eq "debug" ) ]] 
 then
-DEBUG_BUILD_OPTION="--enable-debug"
-DEB_DEBUG_EXTN=$2+
+	DEBUG_BUILD_OPTION="--enable-debug"
+	DEB_DEBUG_EXTN=$2+
 fi
 
 pushd spl

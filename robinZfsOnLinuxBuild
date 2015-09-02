@@ -5,6 +5,12 @@
 # package
 #
 
+if [[ ($# -lt 1)  ||  ("$1" -eq "-h") ]]
+then
+	echo "Usage: $0 <release number> [debug]"
+	exit 1
+fi
+
 docker_image="stash.robinsystems.com:5000/bld-host:r10"
 package="zfs-on-linux"
 baseVersion="0.6.3"
