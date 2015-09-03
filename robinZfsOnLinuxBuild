@@ -7,7 +7,7 @@
 
 RELEASE_NUM=0
 DEBUG_OPT="None"
-if [[ ($# -lt 1)  ||  ("$1" == "-h") ]]
+if [[ ( $# -lt 1 )  ||  ( "$1" == "-h" ) ]]
 then
 	echo "Usage: $0 <release number> [debug]"
 	exit 1
