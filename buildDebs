@@ -7,7 +7,7 @@
 DEBUG_BUILD_OPTION=""
 DEB_DEBUG_EXTN=""
 
-if [[ ( $# -ge 2 ) && ( "$2" -eq "debug" ) ]] 
+if [[ ( $# -ge 2 ) && ( "$2" == "debug" ) ]] 
 then
 	DEBUG_BUILD_OPTION="--enable-debug"
 	DEB_DEBUG_EXTN=$2+

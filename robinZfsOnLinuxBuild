@@ -5,10 +5,19 @@
 # package
 #
 
+RELEASE_NUM=0
+DEBUG_OPT="None"
 if [[ ($# -lt 1)  ||  ("$1" -eq "-h") ]]
 then
 	echo "Usage: $0 <release number> [debug]"
 	exit 1
+elif [ $# -eq 1 ]
+then
+	RELEASE_NUM=$1
+elif [ $# -ge 2 ]
+then
+	RELEASE_NUM=$1
+	DEBUG_OPT=$2
 fi
 
 docker_image="stash.robinsystems.com:5000/bld-host:r10"
@@ -18,6 +27,6 @@ label=".robin"
 #
 # Now switch to the docker image and build
 #
-docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDebs $1 $2 -b
+docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDebs ${RELEASE_NUM} ${DEBUG_OPT} -b
 
 exit $?
