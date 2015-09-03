@@ -6,12 +6,14 @@
 
 DEBUG_BUILD_OPTION=""
 BUILD_VERSION_BEGIN=0 
-BUILD_VERSION=`expr $BUILD_VERSION_BEGIN + $1`
 
 if [[ ( $# -ge 2 ) && ( "$2" == "debug" ) ]] 
 then
 	DEBUG_BUILD_OPTION="--enable-debug"
+        BUILD_VERSION_BEGIN=500
 fi
+
+BUILD_VERSION=`expr $BUILD_VERSION_BEGIN + $1`
 
 pushd spl
 sed -i "s/Release\:\s*.*/Release\:      $BUILD_VERSION/g" META
