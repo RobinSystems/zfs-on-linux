@@ -7,14 +7,16 @@
 
 RELEASE_NUM=0
 DEBUG_OPT="None"
-if [[ ( $# -lt 1 )  ||  ( "$1" == "-h" ) ]]
-then
-	echo "Usage: $0 <release number> [debug]"
-	exit 1
-elif [ $# -eq 1 ]
-then
-	RELEASE_NUM=$1
-elif [ $# -ge 2 ]
+#if [[ ( $# -lt 1 )  ||  ( "$1" == "-h" ) ]]
+#then
+#	echo "Usage: $0 <release number> [debug]"
+#	exit 1
+#elif [ $# -eq 1 ]
+#then
+
+RELEASE_NUM=$1
+
+if [ $# -ge 2 ]
 then
 	RELEASE_NUM=$1
 	DEBUG_OPT=$2
