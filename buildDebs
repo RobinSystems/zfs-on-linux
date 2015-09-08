@@ -7,10 +7,10 @@
 DEBUG_BUILD_OPTION=""
 BUILD_VERSION_BEGIN=0 
 
-if [[ ( $# -ge 2 ) && ( "$2" == "debug" ) ]] 
+if [ $2"" == "debug" ]
 then
 	DEBUG_BUILD_OPTION="--enable-debug"
-        BUILD_VERSION_BEGIN=500
+    BUILD_VERSION_BEGIN=500
 fi
 
 BUILD_VERSION=`expr $BUILD_VERSION_BEGIN + $1`
@@ -39,4 +39,3 @@ cp zfs/*.deb debs/
 
 chmod -R 777 *
 exit $?
-
