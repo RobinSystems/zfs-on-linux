@@ -17,7 +17,7 @@ then
 fi
 
 echo $RELEASE_NUM $DEBUG_OPT
-docker_image="stash.robinsystems.com:5000/bld-host:r10"
+docker_image="stash.robinsystems.com:5000/bld-host:r13"
 package="zfs-on-linux"
 baseVersion="0.6.3"
 label=".robin"
